@@ -7,4 +7,5 @@ interface HomeRepository {
     suspend fun getUpcoming() : List<MovieApi>
 
     suspend fun getPopular(): List<MovieApi>
+    suspend fun getTopRated(): List<MovieApi>
 }

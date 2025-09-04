@@ -18,4 +18,8 @@ class HomeRepositoryImpl : HomeRepository {
     override suspend fun getUpcoming(): List<MovieApi> {
         return api.getUpcoming().results
     }
+
+    override suspend fun getTopRated(): List<MovieApi> {
+        return api.getTopRated().results
+    }
 }

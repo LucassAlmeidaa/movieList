@@ -61,8 +61,17 @@ class HomeActivity : AppCompatActivity(), HomeListener {
     }
 
     fun bindListeners() {
+        binding.nowPlayingBtn.setOnClickListener {
+            viewModel.getNowPlaying()
+        }
         binding.upcoming.setOnClickListener {
             viewModel.getUpcoming()
+        }
+        binding.topRated.setOnClickListener {
+            viewModel.getTopRated()
+        }
+        binding.popular.setOnClickListener {
+            viewModel.getPopularList()
         }
     }
 

@@ -50,4 +50,28 @@ class HomeViewModel : ViewModel() {
         }
     }
 
+    fun getTopRated() {
+        _stateList.value = HomeState.Loading
+        viewModelScope.launch {
+            try {
+                val response = business.getTopRated()
+                _stateList.value = HomeState.Success(response)
+            } catch (e: Exception) {
+                _stateList.value = HomeState.Error
+            }
+        }
+    }
+
+    fun getPopularList() {
+        _stateList.value = HomeState.Loading
+        viewModelScope.launch {
+            try {
+                val response = business.getPopular()
+                _stateList.value = HomeState.Success(response)
+            } catch (e: Exception) {
+                _stateList.value = HomeState.Error
+            }
+        }
+    }
+
 }

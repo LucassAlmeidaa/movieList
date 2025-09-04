@@ -16,6 +16,10 @@ class HomeBusinessImpl : HomeBusiness {
         return repository.getPopular()
     }
 
+    override suspend fun getTopRated(): List<MovieApi> {
+        return repository.getTopRated()
+    }
+
     override suspend fun getUpcoming(): List<MovieApi> {
         return repository.getUpcoming()
     }
