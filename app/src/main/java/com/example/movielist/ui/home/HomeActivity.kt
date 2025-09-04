@@ -3,10 +3,10 @@ package com.example.movielist.ui.home
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
-import com.example.movielist.R
 import com.example.movielist.databinding.ActivityHomeBinding
 import com.example.movielist.ui.home.adapter.HomeAdapter
 import com.example.movielist.ui.home.adapter.HomeListener
+import com.example.movielist.ui.home.adapter.MovieListAdapter
 
 class HomeActivity : AppCompatActivity(), HomeListener {
 
@@ -18,11 +18,13 @@ class HomeActivity : AppCompatActivity(), HomeListener {
         binding = ActivityHomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
         bindObserver()
+        bindListeners()
+        viewModel.getPopular()
         viewModel.getNowPlaying()
     }
 
     fun bindObserver() {
-        viewModel.state.observe(this){
+        viewModel.statePopular.observe(this){
             when (it) {
                 HomeState.Error -> {
                     Log.v("Teste", "Deu erro")
@@ -37,6 +39,30 @@ class HomeActivity : AppCompatActivity(), HomeListener {
                     Log.v("Teste", "Vaziooooo")
                 }
             }
+        }
+
+        viewModel.stateList.observe(this){
+            when (it) {
+                HomeState.Error -> {
+                    Log.v("Teste", "Deu erro")
+                }
+                is HomeState.Success -> {
+                    binding.moviesNowPlaying.adapter = MovieListAdapter(it.result, this)
+                }
+                HomeState.Loading -> {
+                    Log.v("Teste", "Espera um pouco")
+                }
+                HomeState.Empty -> {
+                    Log.v("Teste", "Vaziooooo")
+                }
+            }
+        }
+
+    }
+
+    fun bindListeners() {
+        binding.upcoming.setOnClickListener {
+            viewModel.getUpcoming()
         }
     }
 

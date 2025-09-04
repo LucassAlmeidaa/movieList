@@ -12,7 +12,11 @@ class HomeBusinessImpl : HomeBusiness {
         return repository.getNowPlaying()
     }
 
+    override suspend fun getPopular(): List<MovieApi> {
+        return repository.getPopular()
+    }
+
     override suspend fun getUpcoming(): List<MovieApi> {
-        TODO("Not yet implemented")
+        return repository.getUpcoming()
     }
 }

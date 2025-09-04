@@ -9,17 +9,43 @@ import com.example.movielist.business.HomeBusinessImpl
 import kotlinx.coroutines.launch
 
 class HomeViewModel : ViewModel() {
-    private val _state = MutableLiveData<HomeState>()
-    val state: LiveData<HomeState> = _state
+    private val _statePopular = MutableLiveData<HomeState>()
+    val statePopular: LiveData<HomeState> = _statePopular
+    private val _stateList = MutableLiveData<HomeState>()
+    val stateList: LiveData<HomeState> = _stateList
     val business: HomeBusiness = HomeBusinessImpl()
     fun getNowPlaying() {
-        _state.value = HomeState.Loading
+        _stateList.value = HomeState.Loading
         viewModelScope.launch {
             try {
                 val response = business.getNowPlaying()
-                _state.value = HomeState.Success(response)
+                _stateList.value = HomeState.Success(response)
             } catch (e: Exception) {
-                _state.value = HomeState.Error
+                _stateList.value = HomeState.Error
+            }
+        }
+    }
+
+    fun getUpcoming() {
+        _stateList.value = HomeState.Loading
+        viewModelScope.launch {
+            try {
+                val response = business.getUpcoming()
+                _stateList.value = HomeState.Success(response)
+            } catch (e: Exception) {
+                _stateList.value = HomeState.Error
+            }
+        }
+    }
+
+    fun getPopular() {
+        _statePopular.value = HomeState.Loading
+        viewModelScope.launch {
+            try {
+                val response = business.getPopular()
+                _statePopular.value = HomeState.Success(response)
+            } catch (e: Exception) {
+                _statePopular.value = HomeState.Error
             }
         }
     }
