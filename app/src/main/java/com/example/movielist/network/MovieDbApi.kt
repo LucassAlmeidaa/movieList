@@ -2,7 +2,9 @@ package com.example.movielist.network
 
 import com.example.movielist.const.ApiConst.TOKEN
 import com.example.movielist.model.MovieList
+import com.example.movielist.model.MovieReviewResponse
 import retrofit2.http.GET
+import retrofit2.http.Path
 
 interface MovieDbApi {
     @GET("movie/popular$TOKEN")
@@ -16,4 +18,9 @@ interface MovieDbApi {
 
     @GET("movie/top_rated$TOKEN")
     suspend fun getTopRated(): MovieList
+
+    @GET("movie/{movie_id}/reviews$TOKEN")
+    suspend fun getMovieReviews(
+        @Path("movie_id") movieId: Int
+    ): MovieReviewResponse
 }

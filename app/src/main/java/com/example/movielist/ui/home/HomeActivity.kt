@@ -1,9 +1,11 @@
 package com.example.movielist.ui.home
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.example.movielist.databinding.ActivityHomeBinding
+import com.example.movielist.ui.details.DetailsActivity
 import com.example.movielist.ui.home.adapter.HomeAdapter
 import com.example.movielist.ui.home.adapter.HomeListener
 import com.example.movielist.ui.home.adapter.MovieListAdapter
@@ -75,8 +77,11 @@ class HomeActivity : AppCompatActivity(), HomeListener {
         }
     }
 
+
     override fun onClickItem(movieId: Int) {
-        Log.v("Teste", "Cliquei no item: " + movieId.toString())
+        val intent = Intent(this, DetailsActivity::class.java)
+        intent.putExtra("movieId", movieId)
+        startActivity(intent)
     }
 
 }
