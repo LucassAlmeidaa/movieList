@@ -1,6 +1,7 @@
 package com.example.movielist.network
 
 import com.example.movielist.const.ApiConst.TOKEN
+import com.example.movielist.model.MovieCastResponse
 import com.example.movielist.model.MovieList
 import com.example.movielist.model.MovieReviewResponse
 import retrofit2.http.GET
@@ -23,4 +24,9 @@ interface MovieDbApi {
     suspend fun getMovieReviews(
         @Path("movie_id") movieId: Int
     ): MovieReviewResponse
+
+    @GET("movie/{movie_id}/credits$TOKEN")
+    suspend fun getMovieCast(
+        @Path("movie_id") movieId: Int
+    ): MovieCastResponse
 }

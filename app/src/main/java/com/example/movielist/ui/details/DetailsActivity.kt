@@ -5,7 +5,9 @@ import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import com.example.movielist.databinding.ActivityDetailsBinding
+import com.example.movielist.model.MovieCastList
 import com.example.movielist.model.MovieReviewList
+import com.example.movielist.ui.details.adapter.DetailsCastAdapter
 import com.example.movielist.ui.details.adapter.DetailsReviewAdapter
 
 class DetailsActivity : AppCompatActivity() {
@@ -21,33 +23,72 @@ class DetailsActivity : AppCompatActivity() {
         setContentView(binding.root)
         movieId = intent.getIntExtra("movieId", 0)
         viewModel.getMovieReview(movieId)
+        viewModel.getMovieCast(movieId)
         bindObserver()
     }
 
     fun bindObserver() {
         viewModel.stateReview.observe(this) {
             when (it) {
-                DetailsState.Error -> {
+                DetailsReviewState.Error -> {
                     Log.v("Teste", "Deu erro")
                 }
-                is DetailsState.Success -> {
-                    bindSuccessState(it.result)
+
+                is DetailsReviewState.Success -> {
+                    bindSuccessStateReviews(it.result)
                 }
-                DetailsState.Loading -> {
+
+                DetailsReviewState.Loading -> {
                     Log.v("Teste", "Espera um pouco")
                 }
-                DetailsState.Empty -> {
+
+                DetailsReviewState.Empty -> {
+                    Log.v("Teste", "Vaziooooo")
+                }
+            }
+        }
+        viewModel.stateCast.observe(this) {
+            when (it) {
+                DetailsCastState.Error -> {
+                    Log.v("Teste", "Deu erro")
+                }
+
+                is DetailsCastState.Success -> {
+                    bindSuccessStateCast(it.result)
+                }
+
+                DetailsCastState.Loading -> {
+                    Log.v("Teste", "Espera um pouco")
+                }
+
+                DetailsCastState.Empty -> {
                     Log.v("Teste", "Vaziooooo")
                 }
             }
         }
     }
 
-    fun bindSuccessState(it: List<MovieReviewList>) {
-        binding.detailsDescription.isVisible = false
-        binding.detailsCast.isVisible = false
-        binding.detailsReviews.isVisible = true
+    fun bindSuccessStateReviews(it: List<MovieReviewList>) {
         binding.detailsReviews.adapter = DetailsReviewAdapter(it)
+    }
+
+    fun bindSuccessStateCast(it: List<MovieCastList>) {
+        binding.detailsCast.adapter = DetailsCastAdapter(it)
+    }
+
+    fun bindListeners() {
+        binding.filmReviews.setOnClickListener {
+            Log.v("TesteClique", "Espera um pouco")
+            binding.detailsDescription.isVisible = false
+            binding.detailsCast.isVisible = false
+            binding.detailsReviews.isVisible = true
+        }
+        binding.detailsCast.setOnClickListener {
+            Log.v("TesteClique", "Espera mais pouco")
+            binding.detailsDescription.isVisible = false
+            binding.detailsCast.isVisible = true
+            binding.detailsReviews.isVisible = false
+        }
     }
 
 }
