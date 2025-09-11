@@ -25,6 +25,7 @@ class DetailsActivity : AppCompatActivity() {
         viewModel.getMovieReview(movieId)
         viewModel.getMovieCast(movieId)
         bindObserver()
+        bindListeners()
     }
 
     fun bindObserver() {
@@ -83,7 +84,7 @@ class DetailsActivity : AppCompatActivity() {
             binding.detailsCast.isVisible = false
             binding.detailsReviews.isVisible = true
         }
-        binding.detailsCast.setOnClickListener {
+        binding.filmCast.setOnClickListener {
             Log.v("TesteClique", "Espera mais pouco")
             binding.detailsDescription.isVisible = false
             binding.detailsCast.isVisible = true

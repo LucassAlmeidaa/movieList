@@ -17,6 +17,7 @@ class DetailsCastViewHolder (
         Glide.with(binding.castAvatar)
             .load(POSTER_PATH + item.profile_path)
             .fitCenter()
+            .circleCrop()
             .into(binding.castAvatar)
         binding.castName.text = item.name
     }

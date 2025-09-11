@@ -11,9 +11,10 @@ import kotlinx.coroutines.launch
 
 class DetailsViewModel : ViewModel() {
     private val _stateReview = MutableLiveData<DetailsReviewState>()
-    private val _stateCast = MutableLiveData<DetailsCastState>()
     val stateReview: LiveData<DetailsReviewState> = _stateReview
+    private val _stateCast = MutableLiveData<DetailsCastState>()
     val stateCast: LiveData<DetailsCastState> = _stateCast
+
     val business: DetailsBusiness = DetailsBusinessImpl()
 
     fun getMovieReview(movieId: Int) {
@@ -21,7 +22,6 @@ class DetailsViewModel : ViewModel() {
         viewModelScope.launch {
             try {
                 val response = business.getMovieReview(movieId)
-                Log.v("testeApi", response.toString())
                 _stateReview.value = DetailsReviewState.Success(response)
             } catch (e: Exception) {
                 _stateReview.value = DetailsReviewState.Error
@@ -34,7 +34,18 @@ class DetailsViewModel : ViewModel() {
         viewModelScope.launch {
             try {
                 val response = business.getMovieCast(movieId)
-                Log.v("testeApi", response.toString())
+                _stateCast.value = DetailsCastState.Success(response)
+            } catch (e: Exception) {
+                _stateCast.value = DetailsCastState.Error
+            }
+        }
+    }
+
+    fun getMovieDetails(movieId: Int) {
+        _stateCast.value = DetailsCastState.Loading
+        viewModelScope.launch {
+            try {
+                val response = business.getMovieCast(movieId)
                 _stateCast.value = DetailsCastState.Success(response)
             } catch (e: Exception) {
                 _stateCast.value = DetailsCastState.Error

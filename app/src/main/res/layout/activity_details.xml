@@ -117,18 +117,25 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="18dp"
-            android:visibility="invisible"
+            android:visibility="visible"
+            tools:listitem="@layout/details_reviews_item"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/detail_options" />
 
         <androidx.recyclerview.widget.RecyclerView
+            tools:listitem="@layout/detail_cast_item"
+            tools:itemCount="5"
             android:id="@+id/details_cast"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="18dp"
-            android:visibility="visible"
+            android:visibility="invisible"
+            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            android:orientation="vertical"
+            app:spanCount="2"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent    "
             app:layout_constraintTop_toBottomOf="@+id/detail_options" />
 
 

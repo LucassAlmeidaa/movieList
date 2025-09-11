@@ -1,7 +1,7 @@
 package com.example.movielist.model
 
 data class MovieCastResponse(
-    val results: List<MovieCastList>,
+    val cast: List<MovieCastList>,
 )
 
 data class MovieCastList(
