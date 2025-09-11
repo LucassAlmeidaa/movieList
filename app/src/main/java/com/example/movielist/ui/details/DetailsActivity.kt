@@ -83,6 +83,7 @@ class DetailsActivity : AppCompatActivity() {
 
                 is DetailsDetailsState.Success -> {
                     val details = it.results
+                    val realiseYear = details.release_date
 
                     Glide.with(binding.filmPicture)
                         .load(POSTER_PATH + details.poster_path)
@@ -99,6 +100,8 @@ class DetailsActivity : AppCompatActivity() {
                     binding.movieTitle.text = details.original_title
                     binding.detailsDescription.text = details.overview
                     binding.detailsDescription.isSelected = true
+                    binding.releaseDate.text = realiseYear.substring(0,4)
+                    binding.minutes.text = "${details.runtime} min"
                 }
 
                 DetailsDetailsState.Loading -> {

@@ -18,6 +18,7 @@
         <ImageView
             android:layout_width="24dp"
             android:layout_height="24dp"
+            android:layout_marginTop="18dp"
             android:background="@drawable/outline_6_ft_apart_24"
             android:backgroundTint="@color/white"
             app:layout_constraintStart_toStartOf="parent"
@@ -27,6 +28,7 @@
             android:id="@+id/detail_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="18dp"
             android:text="Detail"
             android:textAlignment="center"
             android:textColor="@color/white"
@@ -37,6 +39,7 @@
         <ImageView
             android:layout_width="24dp"
             android:layout_height="24dp"
+            android:layout_marginTop="18dp"
             android:background="@drawable/exclamation"
             android:backgroundTint="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
@@ -46,6 +49,7 @@
             android:id="@+id/moviePoster"
             android:layout_width="match_parent"
             android:layout_height="210dp"
+            android:layout_marginTop="16dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/detail_title"
             tools:srcCompat="@tools:sample/backgrounds/scenic" />
@@ -56,7 +60,7 @@
             android:layout_width="95dp"
             android:layout_height="120dp"
             android:layout_marginStart="36dp"
-            android:layout_marginTop="150dp"
+            android:layout_marginTop="165dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/detail_title"
             tools:srcCompat="@tools:sample/avatars" />
@@ -73,24 +77,84 @@
             app:layout_constraintTop_toBottomOf="@id/moviePoster" />
 
         <LinearLayout
-            android:id="@+id/detail_options"
+            android:id="@+id/microDetails"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
+            android:layout_marginTop="32dp"
             android:orientation="horizontal"
+            android:paddingHorizontal="48dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/film_picture">
+
+            <TextView
+                android:id="@+id/release_date"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/tab_background"
+                android:drawableLeft="@drawable/calender"
+                android:text="2021"
+                android:textAlignment="center"
+                android:textColor="#92929D" />
+
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="20dp"
+                android:layout_marginEnd="4dp"
+                android:background="#696974" />
+
+            <TextView
+                android:id="@+id/minutes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/tab_background"
+                android:drawableLeft="@drawable/clock"
+                android:text="148 minutos"
+                android:textAlignment="center"
+                android:textColor="#92929D" />
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="20dp"
+                android:layout_marginEnd="4dp"
+                android:background="#696974" />
+
+            <TextView
+                android:id="@+id/movie_genre"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/tab_background"
+                android:drawableLeft="@drawable/outline_airplane_ticket_24"
+                android:text="Secret"
+                android:textAlignment="center"
+                android:textColor="#92929D" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/detail_options"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/microDetails">
+
+
 
             <TextView
                 android:id="@+id/film_about"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@drawable/tab_background"
                 android:text="About Movie"
                 android:textAlignment="center"
                 android:textColor="@color/white" />
+
 
 
             <TextView
