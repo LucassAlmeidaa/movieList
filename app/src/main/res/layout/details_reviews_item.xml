@@ -21,6 +21,7 @@
         android:layout_marginTop="4dp"
         android:text="3.6"
         android:textSize="12dp"
+        android:textColor="#0296E5"
         app:layout_constraintEnd_toEndOf="@id/avatar_review"
         app:layout_constraintStart_toStartOf="@id/avatar_review"
         app:layout_constraintTop_toBottomOf="@id/avatar_review" />

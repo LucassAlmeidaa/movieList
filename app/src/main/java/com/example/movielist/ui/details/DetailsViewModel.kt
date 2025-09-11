@@ -15,6 +15,9 @@ class DetailsViewModel : ViewModel() {
     private val _stateCast = MutableLiveData<DetailsCastState>()
     val stateCast: LiveData<DetailsCastState> = _stateCast
 
+    private val _stateDetails = MutableLiveData<DetailsDetailsState>()
+    val stateDetails: LiveData<DetailsDetailsState> = _stateDetails
+
     val business: DetailsBusiness = DetailsBusinessImpl()
 
     fun getMovieReview(movieId: Int) {
@@ -42,13 +45,14 @@ class DetailsViewModel : ViewModel() {
     }
 
     fun getMovieDetails(movieId: Int) {
-        _stateCast.value = DetailsCastState.Loading
+        _stateDetails.value = DetailsDetailsState.Loading
         viewModelScope.launch {
             try {
-                val response = business.getMovieCast(movieId)
-                _stateCast.value = DetailsCastState.Success(response)
+                val response = business.getMovieDetail(movieId)
+                Log.v("testeDetails", response.toString())
+                _stateDetails.value = DetailsDetailsState.Success(response)
             } catch (e: Exception) {
-                _stateCast.value = DetailsCastState.Error
+                _stateDetails.value = DetailsDetailsState.Error
             }
         }
     }

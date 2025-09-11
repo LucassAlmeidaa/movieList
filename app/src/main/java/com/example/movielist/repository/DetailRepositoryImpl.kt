@@ -2,7 +2,7 @@ package com.example.movielist.repository
 
 import com.example.movielist.model.MovieApi
 import com.example.movielist.model.MovieCastList
-import com.example.movielist.model.MovieDetailList
+import com.example.movielist.model.MovieDetailsList
 import com.example.movielist.model.MovieReviewList
 import com.example.movielist.network.RetrofitInstance
 
@@ -12,7 +12,7 @@ class DetailRepositoryImpl : DetailRepository {
         return api.getMovieCast(movieId).cast
     }
 
-    override suspend fun getMovieDetail(movieId: Int): List<MovieDetailList> {
+    override suspend fun getMovieDetails(movieId: Int): MovieDetailsList {
         return api.getMovieDetails(movieId)
     }
 
