@@ -5,64 +5,39 @@
     android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#242A32"
-    android:paddingTop="?attr/actionBarSize">
+    android:background="#242A32">
+
+    //action bar
+
+    <ImageView
+        android:id="@+id/moviePoster"
+        android:layout_width="match_parent"
+        android:layout_height="210dp"
+        android:scaleType="fitXY"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:srcCompat="@tools:sample/backgrounds/scenic" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginHorizontal="24dp"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="16dp">
-
-        <ImageView
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:layout_marginTop="18dp"
-            android:background="@drawable/outline_6_ft_apart_24"
-            android:backgroundTint="@color/white"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/detail_title"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="18dp"
-            android:text="Detail"
-            android:textAlignment="center"
-            android:textColor="@color/white"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <ImageView
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:layout_marginTop="18dp"
-            android:background="@drawable/exclamation"
-            android:backgroundTint="@color/white"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <ImageView
-            android:id="@+id/moviePoster"
-            android:layout_width="match_parent"
-            android:layout_height="210dp"
-            android:layout_marginTop="16dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/detail_title"
-            tools:srcCompat="@tools:sample/backgrounds/scenic" />
-
+        android:layout_marginTop="-60dp"
+        app:layout_constraintBottom_toTopOf="@+id/nav_view"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/moviePoster"
+        app:layout_constraintVertical_bias="0">
 
         <ImageView
             android:id="@+id/film_picture"
             android:layout_width="95dp"
             android:layout_height="120dp"
             android:layout_marginStart="36dp"
-            android:layout_marginTop="165dp"
+            android:scaleType="fitXY"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/detail_title"
+            app:layout_constraintTop_toTopOf="parent"
             tools:srcCompat="@tools:sample/avatars" />
 
         <TextView
@@ -74,7 +49,8 @@
             android:textColor="@color/white"
             app:layout_constraintBottom_toBottomOf="@id/film_picture"
             app:layout_constraintStart_toEndOf="@+id/film_picture"
-            app:layout_constraintTop_toBottomOf="@id/moviePoster" />
+            app:layout_constraintTop_toTopOf="@+id/film_picture"
+            app:layout_constraintVertical_bias="1" />
 
         <LinearLayout
             android:id="@+id/microDetails"
@@ -97,7 +73,6 @@
                 android:text="2021"
                 android:textAlignment="center"
                 android:textColor="#92929D" />
-
 
             <View
                 android:layout_width="1dp"
@@ -144,38 +119,52 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/microDetails">
 
-
-
-            <TextView
-                android:id="@+id/film_about"
-                android:layout_width="wrap_content"
+            <RadioGroup
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:text="About Movie"
-                android:textAlignment="center"
-                android:textColor="@color/white" />
+                android:orientation="horizontal">
 
+                <RadioButton
+                    android:id="@+id/film_about"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/tab_background"
+                    android:button="@null"
+                    android:checked="true"
+                    android:gravity="center"
+                    android:paddingBottom="8dp"
+                    android:text="About Movie"
+                    android:textAlignment="center"
+                    android:textColor="@color/white" />
 
+                <RadioButton
+                    android:id="@+id/film_reviews"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/tab_background"
+                    android:button="@null"
+                    android:gravity="center"
+                    android:paddingBottom="8dp"
+                    android:text="Reviews"
+                    android:textAlignment="center"
+                    android:textColor="@color/white" />
 
-            <TextView
-                android:id="@+id/film_reviews"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@drawable/tab_background"
-                android:text="Reviews"
-                android:textAlignment="center"
-                android:textColor="@color/white" />
+                <RadioButton
+                    android:id="@+id/film_cast"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/tab_background"
+                    android:button="@null"
+                    android:gravity="center"
+                    android:paddingBottom="8dp"
+                    android:text="Cast"
+                    android:textAlignment="center"
+                    android:textColor="@color/white" />
 
-            <TextView
-                android:id="@+id/film_cast"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@drawable/tab_background"
-                android:text="Cast"
-                android:textAlignment="center"
-                android:textColor="@color/white" />
+            </RadioGroup>
         </LinearLayout>
 
 
@@ -194,7 +183,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="18dp"
-            android:visibility="invisible"
+            android:visibility="gone"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/detail_options"
@@ -206,7 +195,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="18dp"
             android:orientation="vertical"
-            android:visibility="invisible"
+            android:visibility="gone"
             app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
             app:layout_constraintEnd_toEndOf="parent    "
             app:layout_constraintStart_toStartOf="parent"
