@@ -9,6 +9,7 @@ import com.example.movielist.ui.details.DetailsActivity
 import com.example.movielist.ui.home.adapter.HomeAdapter
 import com.example.movielist.ui.home.adapter.HomeListener
 import com.example.movielist.ui.home.adapter.MovieListAdapter
+import com.example.movielist.ui.search.SearchActivity
 
 class HomeActivity : AppCompatActivity(), HomeListener {
 
@@ -74,6 +75,14 @@ class HomeActivity : AppCompatActivity(), HomeListener {
         }
         binding.popular.setOnClickListener {
             viewModel.getPopularList()
+        }
+        binding.searchButton.setOnClickListener {
+            val query = binding.homeSearch.text.toString()
+            if (query.isNotEmpty()) {
+                val intent = Intent(this, SearchActivity::class.java)
+                intent.putExtra("QUERY", query)
+                startActivity(intent)
+            }
         }
     }
 

@@ -20,5 +20,4 @@ class DetailsBusinessImpl : DetailsBusiness {
     override suspend fun getMovieDetail(movieId: Int): MovieDetailsList {
         return repository.getMovieDetails(movieId)
     }
-
 }

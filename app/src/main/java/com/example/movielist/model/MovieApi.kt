@@ -7,5 +7,6 @@ data class MovieApi(
     val title: String,
     val release_date: String,
     val genre_ids: List<Int>,
-    val overview: String
+    val overview: String,
+    val vote_average: Number
 )

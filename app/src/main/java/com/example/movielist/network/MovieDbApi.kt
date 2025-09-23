@@ -5,8 +5,10 @@ import com.example.movielist.model.MovieCastResponse
 import com.example.movielist.model.MovieDetailsList
 import com.example.movielist.model.MovieList
 import com.example.movielist.model.MovieReviewResponse
+import com.example.movielist.model.SearchResponse
 import retrofit2.http.GET
 import retrofit2.http.Path
+import retrofit2.http.Query
 
 interface MovieDbApi {
     @GET("movie/popular$TOKEN")
@@ -35,4 +37,9 @@ interface MovieDbApi {
     suspend fun getMovieDetails(
         @Path("movie_id") movieId: Int
     ): MovieDetailsList
+
+    @GET("search/movie")
+    suspend fun searchMovies(
+        @Query("query") query: String
+    ): SearchResponse
 }

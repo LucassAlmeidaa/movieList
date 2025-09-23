@@ -22,8 +22,4 @@ class DetailsReviewViewHolder(
         binding.nicknameReview.text = item.author
         binding.contentReview.text = item.content
     }
-
-    private fun bindClick() {
-
-    }
 }

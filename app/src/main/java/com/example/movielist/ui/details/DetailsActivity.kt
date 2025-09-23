@@ -2,7 +2,6 @@ package com.example.movielist.ui.details
 
 import android.os.Bundle
 import android.util.Log
-import android.view.RoundedCorner
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import com.bumptech.glide.Glide
