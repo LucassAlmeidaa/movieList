@@ -4,8 +4,8 @@ import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.example.movielist.databinding.ActivitySearchBinding
+import com.example.movielist.ui.search.adapter.SearchAdapter
 import com.example.movielist.ui.search.adapter.SearchListener
-import com.example.movielist.ui.search.adapter.SearchViewModel
 
 class SearchActivity : AppCompatActivity(), SearchListener {
 
@@ -32,7 +32,7 @@ class SearchActivity : AppCompatActivity(), SearchListener {
                 }
 
                 is SearchState.Success -> {
-                    Log.v("Teste", "Deu erro")
+                    binding.searchList.adapter = SearchAdapter(it.result.results, this)
                 }
 
                 SearchState.Loading -> {

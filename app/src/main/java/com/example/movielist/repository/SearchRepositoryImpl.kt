@@ -1,5 +1,6 @@
 package com.example.movielist.repository
 
+import android.util.Log
 import com.example.movielist.model.SearchResponse
 import com.example.movielist.network.RetrofitInstance
 

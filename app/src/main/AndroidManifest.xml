@@ -18,6 +18,11 @@
             android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"
             android:label="@string/title_activity_details" />
         <activity
+            android:name=".ui.search.SearchActivity"
+            android:exported="false"
+            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"
+            android:label="SearchActivity" />
+        <activity
             android:name=".ui.home.HomeActivity"
             android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"
             android:exported="true"

@@ -1,33 +1,36 @@
-package com.example.movielist.ui.search.adapter
+package com.example.movielist.ui.details.adapter
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
-import com.example.movielist.business.SearchBusiness
-import com.example.movielist.business.SearchBusinessImpl
-import com.example.movielist.ui.search.SearchState
-import kotlinx.coroutines.launch
+import android.util.Log
+import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.example.movielist.const.ApiConst.POSTER_PATH
+import com.example.movielist.databinding.SearchItemBinding
+import com.example.movielist.model.MovieSearchResult
+import com.example.movielist.ui.search.adapter.SearchListener
 
-class SearchViewHolder : ViewModel() {
-    private val _stateSearch = MutableLiveData<SearchState>()
-    val stateSearch: LiveData<SearchState> = _stateSearch
-    val business: SearchBusiness = SearchBusinessImpl()
+class SearchViewHolder(
+    private val binding: SearchItemBinding,
+    private val listener: SearchListener
+) : RecyclerView.ViewHolder(binding.root) {
+    fun bind(item: MovieSearchResult) {
+        bindView(item)
+        onClickItem(item.id)
+    }
 
-    fun getMoviesByName(searchText: String) {
-        _stateSearch.value = SearchState.Loading
-        viewModelScope.launch {
-            try {
-                val response = business.getMoviesByName(searchText)
-                if (response.results.isNotEmpty()) {
-                    _stateSearch.value = SearchState.Success(response)
-                } else {
-                    _stateSearch.value = SearchState.Empty
-                }
-                _stateSearch.value = SearchState.Success(response)
-            } catch (e: Exception) {
-                _stateSearch.value = SearchState.Error
-            }
+    private fun bindView(item: MovieSearchResult) {
+        Log.v("testeeee", item.toString())
+        Glide.with(binding.searchItemImage)
+            .load(POSTER_PATH + item.poster_path)
+            .fitCenter()
+            .circleCrop()
+            .into(binding.searchItemImage)
+        binding.searchItemTitle.text = item.title
+        binding.releaseDate.text = item.release_date
+    }
+
+    private fun onClickItem(movieId: Int) {
+        binding.root.setOnClickListener {
+            listener.onClickItem(movieId)
         }
     }
 }

@@ -38,8 +38,8 @@ interface MovieDbApi {
         @Path("movie_id") movieId: Int
     ): MovieDetailsList
 
-    @GET("search/movie")
+    @GET("search/movie$TOKEN")
     suspend fun searchMovies(
-        @Query("query") query: String
+        @Query("query") query: String,
     ): SearchResponse
 }
