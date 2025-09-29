@@ -1,9 +1,12 @@
 package com.example.movielist.ui.search
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.isVisible
 import com.example.movielist.databinding.ActivitySearchBinding
+import com.example.movielist.ui.details.DetailsActivity
 import com.example.movielist.ui.search.adapter.SearchAdapter
 import com.example.movielist.ui.search.adapter.SearchListener
 
@@ -22,6 +25,7 @@ class SearchActivity : AppCompatActivity(), SearchListener {
         searchText = intent.getStringExtra("QUERY").toString()
         viewModel.getMoviesByName(searchText)
         bindObserver()
+        bindListerners()
     }
 
     fun bindObserver() {
@@ -40,13 +44,27 @@ class SearchActivity : AppCompatActivity(), SearchListener {
                 }
 
                 SearchState.Empty -> {
-                    Log.v("Teste", "Vaziooooo")
+                    binding.notFind.isVisible = true
+                    binding.searchList.isVisible = false
                 }
             }
         }
     }
 
     override fun onClickItem(movieId: Int) {
-        TODO("Not yet implemented")
+        val intent = Intent(this, DetailsActivity::class.java)
+        intent.putExtra("movieId", movieId)
+        startActivity(intent)
+    }
+
+    fun bindListerners() {
+        binding.searchButton.setOnClickListener {
+            val query = binding.searchSearch.text.toString()
+            if (query.isNotEmpty()) {
+                val intent = Intent(this, SearchActivity::class.java)
+                intent.putExtra("QUERY", query)
+                startActivity(intent)
+            }
+        }
     }
 }

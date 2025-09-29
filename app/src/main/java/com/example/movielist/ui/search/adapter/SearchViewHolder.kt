@@ -3,10 +3,16 @@ package com.example.movielist.ui.details.adapter
 import android.util.Log
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.bitmap.CenterCrop
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners
+import com.bumptech.glide.request.RequestOptions
 import com.example.movielist.const.ApiConst.POSTER_PATH
 import com.example.movielist.databinding.SearchItemBinding
 import com.example.movielist.model.MovieSearchResult
 import com.example.movielist.ui.search.adapter.SearchListener
+import java.text.SimpleDateFormat
+import java.time.format.DateTimeFormatter
+import java.util.Locale
 
 class SearchViewHolder(
     private val binding: SearchItemBinding,
@@ -18,14 +24,12 @@ class SearchViewHolder(
     }
 
     private fun bindView(item: MovieSearchResult) {
-        Log.v("testeeee", item.toString())
         Glide.with(binding.searchItemImage)
             .load(POSTER_PATH + item.poster_path)
             .fitCenter()
-            .circleCrop()
+            .apply(RequestOptions().transform(CenterCrop(), RoundedCorners(30)))
             .into(binding.searchItemImage)
         binding.searchItemTitle.text = item.title
-        binding.releaseDate.text = item.release_date
     }
 
     private fun onClickItem(movieId: Int) {
