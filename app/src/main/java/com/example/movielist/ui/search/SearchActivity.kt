@@ -5,8 +5,10 @@ import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
+import com.example.movielist.R
 import com.example.movielist.databinding.ActivitySearchBinding
 import com.example.movielist.ui.details.DetailsActivity
+import com.example.movielist.ui.home.HomeActivity
 import com.example.movielist.ui.search.adapter.SearchAdapter
 import com.example.movielist.ui.search.adapter.SearchListener
 
@@ -26,6 +28,22 @@ class SearchActivity : AppCompatActivity(), SearchListener {
         viewModel.getMoviesByName(searchText)
         bindObserver()
         bindListerners()
+
+        val navView = binding.navView
+        navView.selectedItemId = R.id.navigation_search
+        navView.setOnItemSelectedListener { item ->
+            when (item.itemId) {
+                R.id.navigation_home -> {
+                    startActivity(Intent(this, HomeActivity::class.java))
+                    true
+                }
+                R.id.navigation_search -> {
+                    startActivity(Intent(this, SearchActivity::class.java))
+                    true
+                }
+                else -> false
+            }
+        }
     }
 
     fun bindObserver() {

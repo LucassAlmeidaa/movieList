@@ -34,7 +34,7 @@
             android:hint="Search"
             android:paddingStart="24dp"
             android:paddingEnd="32dp"
-            android:textColor="#67686D"
+            android:textColor="@color/white"
             android:textColorHint="#67686D"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -60,7 +60,6 @@
             android:orientation="horizontal"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/home_search"
             tools:listitem="@layout/movie_list_item" />
@@ -75,42 +74,67 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/movie_list">
 
-            <TextView
-                android:id="@+id/now_playing_btn"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Now Playing"
-                android:textAlignment="center"
-                android:textColor="@color/white" />
+            <RadioGroup
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+                <RadioButton
+                    android:id="@+id/now_playing_btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/tab_background"
+                    android:button="@null"
+                    android:checked="true"
+                    android:gravity="center"
+                    android:paddingBottom="8dp"
+                    android:text="Now Playing"
+                    android:textAlignment="center"
+                    android:textColor="@color/white"/>
 
-            <TextView
-                android:id="@+id/upcoming"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Upcoming"
-                android:textAlignment="center"
-                android:textColor="@color/white" />
+                <RadioButton
+                    android:id="@+id/upcoming"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/tab_background"
+                    android:button="@null"
+                    android:checked="false"
+                    android:gravity="center"
+                    android:paddingBottom="8dp"
+                    android:text="Upcoming"
+                    android:textAlignment="center"
+                    android:textColor="@color/white"/>
 
-            <TextView
-                android:id="@+id/top_rated"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Top Rated"
-                android:textAlignment="center"
-                android:textColor="@color/white" />
+                <RadioButton
+                    android:id="@+id/top_rated"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/tab_background"
+                    android:button="@null"
+                    android:checked="false"
+                    android:gravity="center"
+                    android:paddingBottom="8dp"
+                    android:text="Top Rated"
+                    android:textAlignment="center"
+                    android:textColor="@color/white"/>
 
-            <TextView
-                android:id="@+id/popular"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Popular"
-                android:textAlignment="center"
-                android:textColor="@color/white" />
+                <RadioButton
+                    android:id="@+id/popular"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/tab_background"
+                    android:button="@null"
+                    android:checked="false"
+                    android:gravity="center"
+                    android:paddingBottom="8dp"
+                    android:text="Popular"
+                    android:textAlignment="center"
+                    android:textColor="@color/white"/>
 
+            </RadioGroup>
         </LinearLayout>
 
         <androidx.recyclerview.widget.RecyclerView
@@ -120,10 +144,10 @@
             android:layout_marginTop="16dp"
             android:orientation="vertical"
             app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            app:spanCount="3"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/movie_sections"
-            app:spanCount="3"
             tools:listitem="@layout/movie_list_now_playing_list" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -134,7 +158,9 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="0dp"
         android:layout_marginEnd="0dp"
-        android:background="?android:attr/windowBackground"
+        android:background="#242A32"
+        app:itemIconTint="@color/bottom_nav_color"
+        app:itemTextColor="@color/bottom_nav_color"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"

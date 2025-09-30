@@ -176,16 +176,15 @@
             android:visibility="visible"
             app:layout_constraintTop_toBottomOf="@+id/detail_options" />
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/details_reviews"
+        <TextView
+            android:id="@+id/notFindCast"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="18dp"
+            android:text="There is nothing about this movie =/"
+            android:textColor="@color/white"
             android:visibility="gone"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/detail_options"
-            tools:listitem="@layout/details_reviews_item" />
+            app:layout_constraintTop_toBottomOf="@+id/detail_options" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/details_cast"
@@ -202,7 +201,37 @@
             tools:itemCount="5"
             tools:listitem="@layout/detail_cast_item" />
 
+        <LinearLayout
+            android:id="@+id/reviewScreen"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent    "
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/detail_options">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/details_reviews"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="18dp"
+                android:visibility="gone"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                tools:listitem="@layout/details_reviews_item" />
+
+            <TextView
+                android:id="@+id/notFindReview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="18dp"
+                android:text="There is nothing about this movie =/"
+                android:textColor="@color/white"
+                android:visibility="gone" />
+        </LinearLayout>
+
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/nav_view"
@@ -210,7 +239,9 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="0dp"
         android:layout_marginEnd="0dp"
-        android:background="?android:attr/windowBackground"
+        android:background="#242A32"
+        app:itemIconTint="@color/bottom_nav_color"
+        app:itemTextColor="@color/bottom_nav_color"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"

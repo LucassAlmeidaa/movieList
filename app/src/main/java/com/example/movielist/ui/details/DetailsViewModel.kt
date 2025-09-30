@@ -1,6 +1,5 @@
 package com.example.movielist.ui.details
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -25,7 +24,11 @@ class DetailsViewModel : ViewModel() {
         viewModelScope.launch {
             try {
                 val response = business.getMovieReview(movieId)
-                _stateReview.value = DetailsReviewState.Success(response)
+                if (response.isNotEmpty()) {
+                    _stateReview.value = DetailsReviewState.Success(response)
+                } else {
+                    _stateReview.value = DetailsReviewState.Empty
+                }
             } catch (e: Exception) {
                 _stateReview.value = DetailsReviewState.Error
             }
@@ -37,7 +40,12 @@ class DetailsViewModel : ViewModel() {
         viewModelScope.launch {
             try {
                 val response = business.getMovieCast(movieId)
-                _stateCast.value = DetailsCastState.Success(response)
+                if (response.isNotEmpty()) {
+                    _stateCast.value = DetailsCastState.Success(response)
+                } else {
+                    _stateCast.value = DetailsCastState.Empty
+                }
+
             } catch (e: Exception) {
                 _stateCast.value = DetailsCastState.Error
             }
@@ -49,7 +57,6 @@ class DetailsViewModel : ViewModel() {
         viewModelScope.launch {
             try {
                 val response = business.getMovieDetail(movieId)
-                Log.v("testeDetails", response.toString())
                 _stateDetails.value = DetailsDetailsState.Success(response)
             } catch (e: Exception) {
                 _stateDetails.value = DetailsDetailsState.Error

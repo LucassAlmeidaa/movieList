@@ -42,7 +42,6 @@ retrofitconverter = { group = "com.squareup.retrofit2", name = "converter-gson",
 glide = { group = "com.github.bumptech.glide", name = "glide", version.ref="glide"}
 
 
-
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
