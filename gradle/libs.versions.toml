@@ -15,14 +15,20 @@ navigationFragmentKtx = "2.6.0"
 navigationUiKtx = "2.6.0"
 recyclerview = "1.4.0"
 retrofit = "2.9.0"
+room = "2.6.1"
+ksp = "2.0.21-1.0.26"
 serialization = "1.8.0"
 retrofitserialization = "1.0.0"
 retrofitconverter="2.9.0"
 glide = "4.16.0"
+media3Database = "1.8.0"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 
+roomcompiler = {group = "androidx.room", name = "room-compiler", version.ref = "room"}
+roomruntime = {group = "androidx.room", name = "room-runtime", version.ref = "room"}
+room = {group = "androidx.room", name = "room-ktx", version.ref = "room"}
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
 androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
@@ -40,9 +46,10 @@ serialization = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization
 retrofitserialization = { group = "com.jakewharton.retrofit", name = "retrofit2-kotlinx-serialization-converter", version.ref = "retrofitserialization" }
 retrofitconverter = { group = "com.squareup.retrofit2", name = "converter-gson", version.ref = "retrofitconverter"}
 glide = { group = "com.github.bumptech.glide", name = "glide", version.ref="glide"}
+androidx-media3-database = { group = "androidx.media3", name = "media3-database", version.ref = "media3Database" }
 
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
-
+ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }

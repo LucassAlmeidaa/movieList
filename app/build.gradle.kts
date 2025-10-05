@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.ksp)
 }
 
 android {
@@ -36,7 +37,6 @@ android {
     buildFeatures{
         viewBinding = true
     }
-
 }
 
 dependencies {
@@ -50,6 +50,7 @@ dependencies {
     implementation(libs.androidx.navigation.fragment.ktx)
     implementation(libs.androidx.navigation.ui.ktx)
     implementation(libs.androidx.recyclerview)
+    implementation(libs.androidx.media3.database)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -58,4 +59,7 @@ dependencies {
     implementation(libs.retrofitserialization)
     implementation(libs.serialization)
     implementation(libs.glide)
+    implementation(libs.room)
+    implementation(libs.roomruntime)
+    ksp(libs.roomcompiler)
 }

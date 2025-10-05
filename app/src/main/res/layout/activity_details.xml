@@ -13,6 +13,7 @@
         android:layout_height="210dp"
         android:scaleType="fitXY"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:srcCompat="@tools:sample/backgrounds/scenic" />
@@ -37,6 +38,16 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:srcCompat="@tools:sample/avatars" />
+
+        <ImageView
+            android:id="@+id/addToWatchList"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:contentDescription="@string/add_to_watchlist"
+            android:src="@drawable/ic_star_outline"
+            app:layout_constraintBottom_toBottomOf="@+id/film_picture"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/film_picture" />
 
         <TextView
             android:id="@+id/movieTitle"

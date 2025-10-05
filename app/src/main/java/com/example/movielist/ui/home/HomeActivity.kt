@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
+import com.example.movielist.app.MovieApp
 import com.example.movielist.R
 import com.example.movielist.databinding.ActivityHomeBinding
 import com.example.movielist.ui.details.DetailsActivity
@@ -11,7 +12,7 @@ import com.example.movielist.ui.home.adapter.HomeAdapter
 import com.example.movielist.ui.home.adapter.HomeListener
 import com.example.movielist.ui.home.adapter.MovieListAdapter
 import com.example.movielist.ui.search.SearchActivity
-import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.example.movielist.ui.watchList.WatchListActivity
 
 class HomeActivity : AppCompatActivity(), HomeListener {
 
@@ -36,6 +37,10 @@ class HomeActivity : AppCompatActivity(), HomeListener {
                 }
                 R.id.navigation_search -> {
                     startActivity(Intent(this, SearchActivity::class.java))
+                    true
+                }
+                R.id.navigation_watchlist -> {
+                    startActivity(Intent(this, WatchListActivity::class.java))
                     true
                 }
                 else -> false

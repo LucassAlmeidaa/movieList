@@ -4,8 +4,11 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.movielist.app.MovieApp
 import com.example.movielist.business.DetailsBusiness
 import com.example.movielist.business.DetailsBusinessImpl
+import com.example.movielist.data.local.model.MovieEntity
+import com.example.movielist.repository.WatchListRepositoryImpl
 import kotlinx.coroutines.launch
 
 class DetailsViewModel : ViewModel() {
@@ -17,8 +20,13 @@ class DetailsViewModel : ViewModel() {
     private val _stateDetails = MutableLiveData<DetailsDetailsState>()
     val stateDetails: LiveData<DetailsDetailsState> = _stateDetails
 
-    val business: DetailsBusiness = DetailsBusinessImpl()
+    private val _isInWatchList = MutableLiveData<Boolean>()
+    val isInWatchList: LiveData<Boolean> get() = _isInWatchList
 
+    private val business: DetailsBusiness = DetailsBusinessImpl()
+    private val repository = WatchListRepositoryImpl()
+
+    // 🔹 Busca os reviews
     fun getMovieReview(movieId: Int) {
         _stateReview.value = DetailsReviewState.Loading
         viewModelScope.launch {
@@ -35,6 +43,7 @@ class DetailsViewModel : ViewModel() {
         }
     }
 
+    // 🔹 Busca o elenco
     fun getMovieCast(movieId: Int) {
         _stateCast.value = DetailsCastState.Loading
         viewModelScope.launch {
@@ -45,13 +54,13 @@ class DetailsViewModel : ViewModel() {
                 } else {
                     _stateCast.value = DetailsCastState.Empty
                 }
-
             } catch (e: Exception) {
                 _stateCast.value = DetailsCastState.Error
             }
         }
     }
 
+    // 🔹 Busca os detalhes
     fun getMovieDetails(movieId: Int) {
         _stateDetails.value = DetailsDetailsState.Loading
         viewModelScope.launch {
@@ -63,5 +72,26 @@ class DetailsViewModel : ViewModel() {
             }
         }
     }
-}
 
+    // 🔹 Verifica se o filme está na watchlist
+    fun checkIfMovieIsInWatchList(movieId: Int) {
+        viewModelScope.launch {
+            val isInList = repository.isMovieInWatchList(movieId)
+            _isInWatchList.postValue(isInList)
+        }
+    }
+
+    // 🔹 Adiciona ou remove da lista
+    fun toggleWatchList(movie: MovieEntity) {
+        viewModelScope.launch {
+            val isInList = repository.isMovieInWatchList(movie.id)
+            if (isInList) {
+                repository.removeFromWatchList(movie.id)
+                _isInWatchList.postValue(false)
+            } else {
+                repository.addToWatchList(movie)
+                _isInWatchList.postValue(true)
+            }
+        }
+    }
+}

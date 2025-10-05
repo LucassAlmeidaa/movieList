@@ -5,6 +5,7 @@
 
     <application
         android:allowBackup="true"
+        android:name=".app.MovieApp"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
         android:icon="@mipmap/ic_launcher"
@@ -22,6 +23,11 @@
             android:exported="false"
             android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"
             android:label="SearchActivity" />
+        <activity
+            android:name=".ui.watchList.WatchListActivity"
+            android:exported="false"
+            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"
+            android:label="WatchlistActivity" />
         <activity
             android:name=".ui.home.HomeActivity"
             android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"
