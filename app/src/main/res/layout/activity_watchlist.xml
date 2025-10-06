@@ -27,6 +27,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:paddingHorizontal="32dp"
+        android:visibility="invisible"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -34,7 +35,6 @@
         app:layout_constraintTop_toBottomOf="@id/tvTitle"
         tools:listitem="@layout/item_watchlist" />
 
-    <!-- Tela vazia -->
     <LinearLayout
         android:id="@+id/emptyLayout"
         android:layout_width="match_parent"
@@ -60,6 +60,25 @@
             android:textColor="@android:color/white"
             android:textSize="16sp" />
     </LinearLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/loading"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="visible"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp">
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:layout_marginTop="135dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/nav_view"

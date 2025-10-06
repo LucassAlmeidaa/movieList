@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.isVisible
 import com.example.movielist.R
 import com.example.movielist.data.local.dao.MovieDao
 import com.example.movielist.databinding.ActivityWatchlistBinding
@@ -35,15 +36,20 @@ class WatchListActivity : AppCompatActivity(), WatchListListener {
                 }
 
                 is WatchListState.Success -> {
+                    binding.loading.isVisible = false
+                    binding.rvWatchlist.isVisible = true
                     binding.rvWatchlist.adapter = WatchlistAdapter(it.result, this)
                 }
 
                 WatchListState.Loading -> {
-                    Log.v("Teste", "Espera um pouco")
+                    binding.loading.isVisible = true
+                    binding.rvWatchlist.isVisible = false
                 }
 
                 WatchListState.Empty -> {
-                    Log.v("Teste", "vazio")
+                    binding.loading.isVisible = false
+                    binding.rvWatchlist.isVisible = false
+                    binding.emptyLayout.isVisible = true
                 }
             }
         }
