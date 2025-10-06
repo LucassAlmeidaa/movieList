@@ -45,30 +45,30 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:textColor="#FF8700"
             android:drawableLeft="@drawable/calender"
             android:text="2021"
-            android:textAlignment="center" />
+            android:textAlignment="center"
+            android:textColor="#FF8700" />
 
         <TextView
             android:id="@+id/minutes"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:textColor="@color/white"
             android:drawableLeft="@drawable/clock"
             android:text="148 minutos"
-            android:textAlignment="center" />
+            android:textAlignment="center"
+            android:textColor="@color/white" />
 
         <TextView
             android:id="@+id/movie_genre"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:textColor="@color/white"
             android:drawableLeft="@drawable/outline_airplane_ticket_24"
             android:text="Secret"
-            android:textAlignment="center" />
+            android:textAlignment="center"
+            android:textColor="@color/white" />
     </LinearLayout>
 
 

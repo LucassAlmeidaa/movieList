@@ -16,7 +16,6 @@ import com.example.movielist.ui.watchList.WatchListActivity
 class SearchActivity : AppCompatActivity(), SearchListener {
 
     private lateinit var binding: ActivitySearchBinding
-
     private val viewModel = SearchViewModel()
     private var searchText = ""
 
@@ -28,26 +27,7 @@ class SearchActivity : AppCompatActivity(), SearchListener {
         viewModel.getMoviesByName(searchText)
         bindObserver()
         bindListerners()
-
-        val navView = binding.navView
-        navView.selectedItemId = R.id.navigation_search
-        navView.setOnItemSelectedListener { item ->
-            when (item.itemId) {
-                R.id.navigation_home -> {
-                    startActivity(Intent(this, HomeActivity::class.java))
-                    true
-                }
-                R.id.navigation_search -> {
-                    startActivity(Intent(this, SearchActivity::class.java))
-                    true
-                }
-                R.id.navigation_watchlist -> {
-                    startActivity(Intent(this, WatchListActivity::class.java))
-                    true
-                }
-                else -> false
-            }
-        }
+        setupNavigation()
     }
 
     fun bindObserver() {
@@ -86,6 +66,25 @@ class SearchActivity : AppCompatActivity(), SearchListener {
                 val intent = Intent(this, SearchActivity::class.java)
                 intent.putExtra("QUERY", query)
                 startActivity(intent)
+            }
+        }
+    }
+
+    private fun setupNavigation() {
+        val navView = binding.navView
+        navView.selectedItemId = R.id.navigation_search
+        navView.setOnItemSelectedListener { item ->
+            when (item.itemId) {
+                R.id.navigation_home -> {
+                    startActivity(Intent(this, HomeActivity::class.java)); true
+                }
+                R.id.navigation_search -> {
+                    startActivity(Intent(this, SearchActivity::class.java)); true
+                }
+                R.id.navigation_watchlist -> {
+                    startActivity(Intent(this, WatchListActivity::class.java)); true
+                }
+                else -> false
             }
         }
     }

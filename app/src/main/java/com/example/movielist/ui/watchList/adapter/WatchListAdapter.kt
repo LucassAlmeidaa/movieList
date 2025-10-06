@@ -5,7 +5,6 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.movielist.databinding.ItemWatchlistBinding
 import com.example.movielist.model.MovieSearchResult
-import com.example.movielist.ui.watchList.WatchListActivity
 
 class WatchlistAdapter(
     private val movies: List<MovieSearchResult>,
@@ -17,7 +16,7 @@ class WatchlistAdapter(
     ): WatchListViewHolder {
         val binding =
             ItemWatchlistBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return WatchListViewHolder(binding,listener)
+        return WatchListViewHolder(binding, listener)
     }
 
     override fun onBindViewHolder(holder: WatchListViewHolder, position: Int) {

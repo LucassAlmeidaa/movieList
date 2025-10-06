@@ -11,9 +11,9 @@
         android:layout_width="32dp"
         android:layout_height="32dp"
         android:background="@drawable/circle_background"
+        android:scaleType="fitXY"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:scaleType="fitXY"
         tools:srcCompat="@tools:sample/avatars" />
 
     <TextView
@@ -21,8 +21,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
         android:text="3.6"
-        android:textSize="12dp"
         android:textColor="#0296E5"
+        android:textSize="12dp"
         app:layout_constraintEnd_toEndOf="@id/avatar_review"
         app:layout_constraintStart_toStartOf="@id/avatar_review"
         app:layout_constraintTop_toBottomOf="@id/avatar_review" />
@@ -43,9 +43,9 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="6dp"
-        android:textColor="@color/white"
         android:paddingBottom="32dp"
         android:text="Testando aqui só pra entender onde fica"
+        android:textColor="@color/white"
         app:layout_constraintStart_toEndOf="@id/avatar_review"
         app:layout_constraintTop_toBottomOf="@id/nickname_review" />
 

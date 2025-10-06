@@ -22,7 +22,6 @@ import com.example.movielist.ui.search.SearchActivity
 import com.example.movielist.ui.watchList.WatchListActivity
 
 class DetailsActivity : AppCompatActivity() {
-
     private lateinit var binding: ActivityDetailsBinding
     private val viewModel = DetailsViewModel()
     private var movieId: Int = 0
@@ -32,14 +31,11 @@ class DetailsActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityDetailsBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
         movieId = intent.getIntExtra("movieId", 0)
-
         viewModel.getMovieReview(movieId)
         viewModel.getMovieCast(movieId)
         viewModel.getMovieDetails(movieId)
         viewModel.checkIfMovieIsInWatchList(movieId)
-
         bindObserver()
         bindListeners()
         setupNavigation()
@@ -86,7 +82,6 @@ class DetailsActivity : AppCompatActivity() {
             }
         }
 
-        // 🔹 Observa o estado da estrela
         viewModel.isInWatchList.observe(this) { isInList ->
             val icon = if (isInList)
                 R.drawable.ic_star_filled
@@ -130,7 +125,6 @@ class DetailsActivity : AppCompatActivity() {
             binding.detailsDescription.isVisible = true
         }
 
-        // ⭐ Clique na estrela
         binding.addToWatchList.setOnClickListener {
             currentMovie?.let { movie ->
                 viewModel.toggleWatchList(movie)
@@ -148,12 +142,15 @@ class DetailsActivity : AppCompatActivity() {
                 R.id.navigation_home -> {
                     startActivity(Intent(this, HomeActivity::class.java)); true
                 }
+
                 R.id.navigation_search -> {
                     startActivity(Intent(this, SearchActivity::class.java)); true
                 }
+
                 R.id.navigation_watchlist -> {
                     startActivity(Intent(this, WatchListActivity::class.java)); true
                 }
+
                 else -> false
             }
         }

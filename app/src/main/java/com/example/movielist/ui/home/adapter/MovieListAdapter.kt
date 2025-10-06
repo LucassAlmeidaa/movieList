@@ -16,7 +16,11 @@ class MovieListAdapter(
         viewType: Int
     ): HomeViewHolderUpcoming {
         val binding =
-            MovieListNowPlayingListBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+            MovieListNowPlayingListBinding.inflate(
+                LayoutInflater.from(parent.context),
+                parent,
+                false
+            )
         return HomeViewHolderUpcoming(binding, listener)
     }
 

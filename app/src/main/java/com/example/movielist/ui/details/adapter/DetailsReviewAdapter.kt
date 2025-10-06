@@ -13,7 +13,8 @@ class DetailsReviewAdapter(
         parent: ViewGroup,
         viewType: Int
     ): DetailsReviewViewHolder {
-        val binding = DetailsReviewsItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        val binding =
+            DetailsReviewsItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return DetailsReviewViewHolder(binding)
     }
 

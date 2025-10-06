@@ -14,7 +14,6 @@ import com.example.movielist.ui.watchList.adapter.WatchListListener
 import com.example.movielist.ui.watchList.adapter.WatchlistAdapter
 
 class WatchListActivity : AppCompatActivity(), WatchListListener {
-
     private lateinit var binding: ActivityWatchlistBinding
     private val viewModel = WatchListViewModel()
     private lateinit var movieDao: MovieDao
@@ -25,29 +24,7 @@ class WatchListActivity : AppCompatActivity(), WatchListListener {
         setContentView(binding.root)
         viewModel.getWatchList()
         bindObserver()
-
-        val navView = binding.navView
-        navView.selectedItemId = R.id.navigation_watchlist
-        navView.setOnItemSelectedListener { item ->
-            when (item.itemId) {
-                R.id.navigation_home -> {
-                    startActivity(Intent(this, HomeActivity::class.java))
-                    true
-                }
-
-                R.id.navigation_search -> {
-                    startActivity(Intent(this, SearchActivity::class.java))
-                    true
-                }
-
-                R.id.navigation_watchlist -> {
-                    startActivity(Intent(this, WatchListActivity::class.java))
-                    true
-                }
-
-                else -> false
-            }
-        }
+        setupNavigation()
     }
 
     fun bindObserver() {
@@ -78,4 +55,25 @@ class WatchListActivity : AppCompatActivity(), WatchListListener {
         startActivity(intent)
     }
 
+    private fun setupNavigation() {
+        val navView = binding.navView
+        navView.selectedItemId = R.id.navigation_watchlist
+        navView.setOnItemSelectedListener { item ->
+            when (item.itemId) {
+                R.id.navigation_home -> {
+                    startActivity(Intent(this, HomeActivity::class.java)); true
+                }
+
+                R.id.navigation_search -> {
+                    startActivity(Intent(this, SearchActivity::class.java)); true
+                }
+
+                R.id.navigation_watchlist -> {
+                    startActivity(Intent(this, WatchListActivity::class.java)); true
+                }
+
+                else -> false
+            }
+        }
+    }
 }

@@ -13,7 +13,8 @@ class DetailsCastAdapter(
         parent: ViewGroup,
         viewType: Int
     ): DetailsCastViewHolder {
-        val binding = DetailCastItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        val binding =
+            DetailCastItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return DetailsCastViewHolder(binding)
     }
 

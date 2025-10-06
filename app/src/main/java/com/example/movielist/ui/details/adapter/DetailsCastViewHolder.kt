@@ -6,7 +6,7 @@ import com.example.movielist.const.ApiConst.POSTER_PATH
 import com.example.movielist.databinding.DetailCastItemBinding
 import com.example.movielist.model.MovieCastList
 
-class DetailsCastViewHolder (
+class DetailsCastViewHolder(
     private val binding: DetailCastItemBinding,
 ) : RecyclerView.ViewHolder(binding.root) {
     fun bind(item: MovieCastList) {

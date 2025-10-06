@@ -4,7 +4,6 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.movielist.databinding.MovieListItemBinding
-import com.example.movielist.databinding.MovieListNowPlayingListBinding
 import com.example.movielist.model.MovieApi
 
 class HomeAdapter(
