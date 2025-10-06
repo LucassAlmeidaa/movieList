@@ -58,11 +58,22 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:orientation="horizontal"
+            android:visibility="invisible"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/home_search"
             tools:listitem="@layout/movie_list_item" />
+
+        <ProgressBar
+            android:id="@+id/progressBarPopular"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:layout_marginTop="42dp"
+            android:visibility="invisible"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/home_search" />
 
         <LinearLayout
             android:id="@+id/movie_sections"
@@ -144,12 +155,23 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:orientation="vertical"
+            android:visibility="invisible"
             app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/movie_sections"
             app:spanCount="3"
             tools:listitem="@layout/movie_list_now_playing_list" />
+
+        <ProgressBar
+            android:id="@+id/progressBarNowPlaying"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:layout_marginTop="135dp"
+            android:visibility="invisible"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/movie_sections" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

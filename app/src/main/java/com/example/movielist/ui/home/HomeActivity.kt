@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.isVisible
 import com.example.movielist.R
 import com.example.movielist.databinding.ActivityHomeBinding
 import com.example.movielist.ui.details.DetailsActivity
@@ -38,10 +39,13 @@ class HomeActivity : AppCompatActivity(), HomeListener {
 
                 is HomeState.Success -> {
                     binding.movieList.adapter = HomeAdapter(it.result, this)
+                    binding.movieList.isVisible = true
+                    binding.progressBarPopular.isVisible = false
                 }
 
                 HomeState.Loading -> {
-                    Log.v("Teste", "Espera um pouco")
+                    binding.movieList.isVisible = false
+                    binding.progressBarPopular.isVisible = true
                 }
 
                 HomeState.Empty -> {
@@ -58,10 +62,13 @@ class HomeActivity : AppCompatActivity(), HomeListener {
 
                 is HomeState.Success -> {
                     binding.moviesNowPlaying.adapter = MovieListAdapter(it.result, this)
+                    binding.moviesNowPlaying.isVisible = true
+                    binding.progressBarNowPlaying.isVisible = false
                 }
 
                 HomeState.Loading -> {
-                    Log.v("Teste", "Espera um pouco")
+                    binding.moviesNowPlaying.isVisible = false
+                    binding.progressBarNowPlaying.isVisible = true
                 }
 
                 HomeState.Empty -> {
