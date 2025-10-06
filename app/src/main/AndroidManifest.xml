@@ -30,7 +30,7 @@
             android:label="WatchlistActivity" />
         <activity
             android:name=".ui.home.HomeActivity"
-            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"
+            android:theme="@style/Theme.MovieList.Splash"
             android:exported="true"
             tools:ignore="MissingClass">
             <intent-filter>
