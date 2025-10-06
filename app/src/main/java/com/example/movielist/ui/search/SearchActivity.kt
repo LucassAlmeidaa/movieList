@@ -39,13 +39,18 @@ class SearchActivity : AppCompatActivity(), SearchListener {
 
                 is SearchState.Success -> {
                     binding.searchList.adapter = SearchAdapter(it.result.results, this)
+                    binding.loading.isVisible = false
+                    binding.searchList.isVisible = true
                 }
 
                 SearchState.Loading -> {
-                    Log.v("Teste", "Espera um pouco")
+                    binding.searchList.isVisible = false
+                    binding.loading.isVisible = true
+
                 }
 
                 SearchState.Empty -> {
+                    binding.loading.isVisible = false
                     binding.notFind.isVisible = true
                     binding.searchList.isVisible = false
                 }
